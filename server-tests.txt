@@ -1,0 +1,34 @@
+
+
+Express server listening on 9000, in test mode
+  GET /api/gameHistory
+[90mPOST /api/createGame [32m200 [90m6ms - 127b[0m
+[90mGET /api/gameHistory/999 [32m200 [90m1ms - 127b[0m
+    ✓ should respond with JSON array with created events for game (43ms)
+
+  In memory store
+    ✓ Should return empty array for unknown id 
+    ✓ Should return events previously stored 
+    ✓ should append stored events to events previously stored 
+
+  tictactoe game context
+    ✓ should route command to instantiated tictactoe game with event stream from store and return and store generated events. Test using fakes/stubs. 
+    ✓ should route command to instantiated tictactoe game with event stream from store and return generated events, using mock style tests. 
+
+  create game command
+    ✓ should create game 
+    ✓ should create game with another user another time 
+
+  join game command
+    ✓ should join game 
+    ✓ should reject joining of a non-existing game 
+
+  when make move command
+    on new game
+      ✓ should join game 
+    one previous move
+      ✓ placing move in same place should be illegal 
+
+
+  12 passing (59ms)
+
