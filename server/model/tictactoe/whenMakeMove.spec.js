@@ -324,4 +324,109 @@ describe('when make move command', function(){
     });
   });
 
+  describe("placing on the last unoccupied square", function(){
+    it('should announce draw', function(){
+      given.push({
+        id:"1",
+        event:"MoveMade",
+        userName:"Atli",
+        name:"TestGame",
+        x:0,
+        y:0,
+        side:'X',
+        timeStamp: "2015.12.09T12:30:00"
+      }, {
+        id:"2",
+        event:"MoveMade",
+        userName:"Kalli",
+        name:"TestGame",
+        x:1,
+        y:0,
+        side:'Y',
+        timeStamp: "2015.12.09T12:31:00"
+      }, {
+        id:"3",
+        event:"MoveMade",
+        userName:"Atli",
+        name:"TestGame",
+        x:2,
+        y:0,
+        side:'X',
+        timeStamp: "2015.12.09T12:32:00"
+      },  {
+        id:"4",
+        event:"MoveMade",
+        userName:"Kalli",
+        name:"TestGame",
+        x:0,
+        y:1,
+        side:'Y',
+        timeStamp: "2015.12.09T12:33:00"
+      },  {
+        id:"5",
+        event:"MoveMade",
+        userName:"Atli",
+        name:"TestGame",
+        x:1,
+        y:1,
+        side:'X',
+        timeStamp: "2015.12.09T12:34:00"
+      },  {
+        id:"6",
+        event:"MoveMade",
+        userName:"Kalli",
+        name:"TestGame",
+        x:0,
+        y:2,
+        side:'Y',
+        timeStamp: "2015.12.09T12:35:00"
+      }, {
+        id:"7",
+        event:"MoveMade",
+        userName:"Atli",
+        name:"TestGame",
+        x:1,
+        y:2,
+        side:'X',
+        timeStamp: "2015.12.09T12:36:00"
+      }, {
+        id:"8",
+        event:"MoveMade",
+        userName:"Kalli",
+        name:"TestGame",
+        x:2,
+        y:2,
+        side:'Y',
+        timeStamp: "2015.12.09T12:37:00"
+      });
+
+      when={
+        id:"9",
+        comm:"MakeMove",
+        userName:"Atli",
+        x:2,
+        y:1,
+        side:'X',
+        timeStamp: "2015.12.09T12:38:00"
+      };
+
+      then=[{
+        id:"9",
+        event:"GameDraw",
+        userName:"Atli",
+        name:"TestGame",
+        x:2,
+        y:1,
+        side:'X',
+        timeStamp: "2015.12.09T12:38:00"
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+
+    });
+  });
+
+
 });
