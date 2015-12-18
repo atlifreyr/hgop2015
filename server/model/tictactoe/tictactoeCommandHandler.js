@@ -50,6 +50,24 @@ module.exports = function tictactoeCommandHandler(events) {
       }
     },
     "MakeMove": function(cmd){
+      var a,b,c;
+      // Check for horizontal win
+      a = cmd.side;
+      b = gameState.board[(cmd.x+1)%3][cmd.y];
+      c = gameState.board[(cmd.x+2)%3][cmd.y];
+      if (a === b && b === c) {
+        return [{
+          id: cmd.id,
+          event: "GameWon",
+          userName: cmd.userName,
+          name: gameState.gameCreatedEvent.name,
+          x: cmd.x,
+          y: cmd.y,
+          side: cmd.side,
+          timeStamp: cmd.timeStamp
+        }];
+      }
+
       var eventName = "";
       if(gameState.board[cmd.x][cmd.y]!==''){
         eventName = "IllegalMove";

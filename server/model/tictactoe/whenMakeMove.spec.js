@@ -49,6 +49,39 @@ describe('when make move command', function(){
     })
   });
 
+  describe("on placing on an occupied square", function(){
+    it('should return IllegalMove', function(){
+      given.push({
+        id:"123",
+        event:"MoveMade",
+        userName:"Atli",
+        name:"TestGame",
+        x:0,
+        y:0,
+        side:'X',
+        timeStamp: "2015.12.09T11:30:55"
+      });
+      when={
+        id:"124",
+        comm:"MakeMove",
+        userName:"Kalli",
+        x:0,
+        y:0,
+        side:'Y',
+        timeStamp: "2015.12.09T11:30:59"
+      };
+      then=[{
+        id:"124",
+        event:"IllegalMove",
+        userName:"Kalli",
+        x:0,
+        y:0,
+        side:'Y',
+        timeStamp: "2015.12.09T11:30:59"
+      }];
+    });
+  });
+
   describe("one previous move", function(){
     it('placing move in same place should be illegal',function(){
       given.push({
@@ -89,9 +122,9 @@ describe('when make move command', function(){
 
     });
   });
-  describe("on getting placing 3 in a horizontal line", function(){
+  describe("on placing 3 in a horizontal line", function(){
     it('should announce game won', function(){
-      given.push([{
+      given.push({
         id:"1",
         event:"MoveMade",
         userName:"Atli",
@@ -127,7 +160,7 @@ describe('when make move command', function(){
         y:1,
         side:'Y',
         timeStamp: "2015.12.09T12:33:00"
-      }]);
+      });
 
       when={
         id:"5",
