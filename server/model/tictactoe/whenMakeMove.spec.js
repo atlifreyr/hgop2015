@@ -189,4 +189,139 @@ describe('when make move command', function(){
 
     });
   });
+  describe("on placing 3 in a vertical line", function(){
+    it('should announce game won', function(){
+      given.push({
+        id:"1",
+        event:"MoveMade",
+        userName:"Atli",
+        name:"TestGame",
+        x:0,
+        y:0,
+        side:'X',
+        timeStamp: "2015.12.09T12:30:00"
+      }, {
+        id:"2",
+        event:"MoveMade",
+        userName:"Kalli",
+        name:"TestGame",
+        x:1,
+        y:0,
+        side:'Y',
+        timeStamp: "2015.12.09T12:31:00"
+      }, {
+        id:"3",
+        event:"MoveMade",
+        userName:"Atli",
+        name:"TestGame",
+        x:0,
+        y:1,
+        side:'X',
+        timeStamp: "2015.12.09T12:32:00"
+      }, {
+        id:"4",
+        event:"MoveMade",
+        userName:"Kalli",
+        name:"TestGame",
+        x:1,
+        y:1,
+        side:'Y',
+        timeStamp: "2015.12.09T12:33:00"
+      });
+
+      when={
+        id:"5",
+        comm:"MakeMove",
+        userName:"Atli",
+        x:0,
+        y:2,
+        side:'X',
+        timeStamp: "2015.12.09T12:34:00"
+      };
+
+      then=[{
+        id:"5",
+        event:"GameWon",
+        userName:"Atli",
+        name:"TestGame",
+        x:0,
+        y:2,
+        side:'X',
+        timeStamp: "2015.12.09T12:34:00"
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+
+    });
+  });
+  describe("on placing 3 in a diagonal line", function(){
+    it('should announce game won', function(){
+      given.push({
+        id:"1",
+        event:"MoveMade",
+        userName:"Atli",
+        name:"TestGame",
+        x:0,
+        y:0,
+        side:'X',
+        timeStamp: "2015.12.09T12:30:00"
+      }, {
+        id:"2",
+        event:"MoveMade",
+        userName:"Kalli",
+        name:"TestGame",
+        x:0,
+        y:1,
+        side:'Y',
+        timeStamp: "2015.12.09T12:31:00"
+      }, {
+        id:"3",
+        event:"MoveMade",
+        userName:"Atli",
+        name:"TestGame",
+        x:1,
+        y:1,
+        side:'X',
+        timeStamp: "2015.12.09T12:32:00"
+      }, {
+        id:"4",
+        event:"MoveMade",
+        userName:"Kalli",
+        name:"TestGame",
+        x:1,
+        y:0,
+        side:'Y',
+        timeStamp: "2015.12.09T12:33:00"
+      });
+
+      when={
+        id:"5",
+        comm:"MakeMove",
+        userName:"Atli",
+        x:2,
+        y:2,
+        side:'X',
+        timeStamp: "2015.12.09T12:34:00"
+      };
+
+      then=[{
+        id:"5",
+        event:"GameWon",
+        userName:"Atli",
+        name:"TestGame",
+        x:2,
+        y:2,
+        side:'X',
+        timeStamp: "2015.12.09T12:34:00"
+      }];
+
+      var actualEvents = tictactoeCommandHandler(given).executeCommand(when);
+
+      JSON.stringify(actualEvents).should.be.exactly(JSON.stringify(then));
+
+    });
+  });
+
 });
