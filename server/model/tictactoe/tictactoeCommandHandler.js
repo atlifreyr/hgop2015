@@ -51,11 +51,26 @@ module.exports = function tictactoeCommandHandler(events) {
     },
     "MakeMove": function(cmd){
       var a,b,c;
+      var won = false;
       // Check for horizontal win
       a = cmd.side;
       b = gameState.board[(cmd.x+1)%3][cmd.y];
       c = gameState.board[(cmd.x+2)%3][cmd.y];
-      if (a === b && b === c) {
+      if (a === b && b === c) won = true;
+
+      // Check for vertical win
+      a = cmd.side;
+      b = gameState.board[cmd.x][(cmd.y+1)%3];
+      c = gameState.board[cmd.x][(cmd.y+2)%3];
+      if (a === b && b === c) won = true;
+
+      // Check for diagonal win
+      a = cmd.side;
+      b = gameState.board[(cmd.x+1)%3][(cmd.y+1)%3];
+      c = gameState.board[(cmd.x+2)%3][(cmd.y+2)%3];
+      if (a === b && b === c) won = true;
+
+      if (won) {
         return [{
           id: cmd.id,
           event: "GameWon",
