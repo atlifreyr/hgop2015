@@ -3,8 +3,8 @@
 Express server listening on 9000, in test mode
   GET /api/gameHistory
 [90mPOST /api/createGame [32m200 [90m6ms - 127b[0m
-[90mGET /api/gameHistory/999 [32m200 [90m1ms - 127b[0m
-    ✓ should respond with JSON array with created events for game (43ms)
+[90mGET /api/gameHistory/999 [32m200 [90m2ms - 127b[0m
+    ✓ should respond with JSON array with created events for game (45ms)
 
   In memory store
     ✓ Should return empty array for unknown id 
@@ -30,5 +30,5 @@ Express server listening on 9000, in test mode
       ✓ placing move in same place should be illegal 
 
 
-  12 passing (59ms)
+  12 passing (62ms)
 

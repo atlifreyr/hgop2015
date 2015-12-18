@@ -33,6 +33,14 @@ module.exports = function(config) {
       'client/components/**/*.html'
     ],
 
+    reporters: ['progress', 'jenkins'],
+
+    jenkinsReporter: {
+      outputFile: 'test-results.xml',
+      suite: 'karma-jenkins-test',
+      classnameSuffix: 'browser-test'
+    },
+
     preprocessors: {
       '**/*.jade': 'ng-jade2js',
       '**/*.html': 'html2js',
