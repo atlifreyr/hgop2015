@@ -11,9 +11,9 @@ describe('GET /api/gameHistory', function () {
       id : "1234",
       gameId : "999",
       comm: "CreateGame",
-      userName: "Gulli",
-      name: "TheFirstGame",
-      timeStamp: "2014-12-02T11:29:29"
+      userName: "Atli",
+      name: "TestGame",
+      timeStamp: "2015-12-10T11:29:29"
     };
 
     var req = request(app);
@@ -35,9 +35,9 @@ describe('GET /api/gameHistory', function () {
                 "id": "1234",
                 "gameId": "999",
                 "event": "GameCreated",
-                "userName": "Gulli",
-                "name": "TheFirstGame",
-                "timeStamp": "2014-12-02T11:29:29"
+                "userName": "Atli",
+                "name": "TestGame",
+                "timeStamp": "2015-12-10T11:29:29"
               }]);
             done();
           });
