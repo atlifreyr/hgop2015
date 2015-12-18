@@ -50,21 +50,16 @@ module.exports = function tictactoeCommandHandler(events) {
       }
     },
     "MakeMove": function(cmd){
+      var eventName = "";
       if(gameState.board[cmd.x][cmd.y]!==''){
-        return [{
-          id: cmd.id,
-          event: "IllegalMove",
-          userName: cmd.userName,
-          name:gameState.gameCreatedEvent.name,
-          x:cmd.x,
-          y:cmd.y,
-          side:cmd.side,
-          timeStamp: cmd.timeStamp
-        }]
+        eventName = "IllegalMove";
+      }
+      else {
+        eventName = "MoveMade";
       }
       return [{
         id: cmd.id,
-        event: "MoveMade",
+        event: eventName,
         userName: cmd.userName,
         name:gameState.gameCreatedEvent.name,
         x:cmd.x,

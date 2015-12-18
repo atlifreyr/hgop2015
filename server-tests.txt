@@ -1,34 +1,36 @@
 
-
-Express server listening on 9000, in test mode
-  GET /api/gameHistory
+[0m[0m
+Express server listening on 9000, in development mode
+[0m  GET /api/gameHistory[0m
 [90mPOST /api/createGame [32m200 [90m6ms - 127b[0m
 [90mGET /api/gameHistory/999 [32m200 [90m2ms - 127b[0m
-    ✓ should respond with JSON array with created events for game (45ms)
+[2K[0G  [32m  ✓[0m[90m should respond with JSON array with created events for game [0m[33m(47ms)[0m
 
-  In memory store
-    ✓ Should return empty array for unknown id 
-    ✓ Should return events previously stored 
-    ✓ should append stored events to events previously stored 
+[0m  In memory store[0m
+[2K[0G  [32m  ✓[0m[90m Should return empty array for unknown id [0m
+[2K[0G  [32m  ✓[0m[90m Should return events previously stored [0m
+[2K[0G  [32m  ✓[0m[90m should append stored events to events previously stored [0m
 
-  tictactoe game context
-    ✓ should route command to instantiated tictactoe game with event stream from store and return and store generated events. Test using fakes/stubs. 
-    ✓ should route command to instantiated tictactoe game with event stream from store and return generated events, using mock style tests. 
+[0m  tictactoe game context[0m
+[2K[0G  [32m  ✓[0m[90m should route command to instantiated tictactoe game with event stream from store and return and store generated events. Test using fakes/stubs. [0m
+[2K[0G  [32m  ✓[0m[90m should route command to instantiated tictactoe game with event stream from store and return generated events, using mock style tests. [0m
 
-  create game command
-    ✓ should create game 
-    ✓ should create game with another user another time 
+[0m  create game command[0m
+[2K[0G  [32m  ✓[0m[90m should create game [0m
+[2K[0G  [32m  ✓[0m[90m should create game with another id, user, and time [0m
 
-  join game command
-    ✓ should join game 
-    ✓ should reject joining of a non-existing game 
+[0m  join game command[0m
+[2K[0G  [32m  ✓[0m[90m should join game [0m
+[2K[0G  [32m  ✓[0m[90m should reject joining of a non-existing game [0m
 
-  when make move command
-    on new game
-      ✓ should join game 
-    one previous move
-      ✓ placing move in same place should be illegal 
+[0m  when make move command[0m
+[0m    on new game[0m
+[2K[0G    [32m  ✓[0m[90m should join game [0m
+[0m    one previous move[0m
+[2K[0G    [32m  ✓[0m[90m placing move in same place should be illegal [0m
+[0m    on getting placing 3 in a horizontal line[0m
+[2K[0G    [31m  1) should announce game won[0m
 
 
-  12 passing (62ms)
+[92m [0m[32m 12 passing[0m[90m (64ms)[0m
 
